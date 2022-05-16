@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Work Dir
-      run: echo $(pwd)
+      run: echo $(ls)
     - name: Docker login
       run: |
         docker login -u $DOCKER_USER_NAME -p $DOCKER_PASSWORD
