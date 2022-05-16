@@ -1,0 +1,26 @@
+name: Admin-product
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+env:
+  DOCKER_USER_NAME: ${{secrets.DOCKER_USER_NAME}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  PRODUCT_REPO_NAME: ${{secrets.PRODUCT_REPO_NAME}}
+
+jobs:
+  product-service:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker login
+      run: |
+        docker login -u $DOCKER_USER_NAME -p $DOCKER_PASSWORD
+    - name: Build product service docker image
+      run: docker build . --file Dockerfile --tag $DOCKER_USER_NAME/$PRODUCT_REPO_NAME:latest
+    - name: Push product service docker image
+      run: docker push $DOCKER_USER_NAME/$PRODUCT_REPO_NAME:latest
+  
+
