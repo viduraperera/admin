@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server-admin-pod
+  labels:
+    name: server-admin-pod
+    app: demo-server-admin-pod
+
+spec:
+  containers:
+    - name: shop-admin-pod
+      image: vup97/shop-admin
+      ports:
+        - containerPort: 5000
