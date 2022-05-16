@@ -16,11 +16,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Work Dir
-      run: echo $(ls)
+      run: | 
+        echo $DOCKER_USER_NAME
+        echo $DOCKER_PASSWORD
+        echo $PRODUCT_REPO_NAME
     - name: Docker login
       run: |
         docker login -u $DOCKER_USER_NAME -p $DOCKER_PASSWORD
     - name: Build product service docker image
       run: docker build . --file Dockerfile -t vup97/shop-admin:latest
     - name: Push product service docker image
-      run: docker push $DOCKER_USER_NAME/$PRODUCT_REPO_NAME:latest
+      run: docker push "$DOCKER_USER_NAME/$PRODUCT_REPO_NAME:latest"
