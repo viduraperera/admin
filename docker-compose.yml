@@ -8,7 +8,7 @@ services:
     volumes:
       - mongodbdata:/data/db
   app:
-    image: shop-admin
+    image: vup97/shop-admin:leatest
     depends_on:
       - mongo
     ports:
