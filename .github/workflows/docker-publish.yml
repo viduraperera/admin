@@ -1,4 +1,4 @@
-name: Admin-product
+name: product-admin service deployment
 
 on:
   push:
@@ -28,7 +28,8 @@ jobs:
     - name: Push product service docker image
       run: docker push "$DOCKER_USER_NAME/$PRODUCT_REPO_NAME:latest"
 
-  build:
+  deploy:
+    needs: [product-service]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master

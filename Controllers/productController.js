@@ -52,7 +52,7 @@ export const deleteProduct = async (req, res) => {
     const product = await Product.findOne({ _id: req.params.id });
     if (!product) return res.status(404).send("Product does not exits");
     await Product.deleteOne({ _id: req.params.id })
-    return res.status(200).send("Lecture deleted");
+    return res.status(200).send("Product deleted");
   } catch (error) {
     return res.status(500).send(error);
   }
