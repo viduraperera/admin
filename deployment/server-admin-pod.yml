@@ -11,4 +11,4 @@ spec:
     - name: shop-admin-pod
       image: vup97/shop-admin
       ports:
-        - containerPort: 5000
+        - containerPort: 5002
