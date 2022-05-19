@@ -20,7 +20,7 @@ app.use("/api/products", products);
 
 const PORT = process.env.PORT || 5002;
 
-//starting app using PORT 5002
+//starting app
 app.listen(PORT, () => console.log(`Server up and running on port ${PORT}`));
 
 export default app;
